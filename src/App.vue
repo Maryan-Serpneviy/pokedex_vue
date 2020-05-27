@@ -1,32 +1,42 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="app">
+    <h1 class="app-heading">Pokedex</h1>
+    <Main />
   </div>
 </template>
 
+<script>
+import { Vue, Component } from 'vue-property-decorator'
+import Main from './pages/Main.vue'
+
+@Component({
+  components: {
+    Main
+  }
+})
+export default class extends Vue { }
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "./assets/styles/utils/variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: $black;
 }
 
-#nav {
-  padding: 30px;
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.app-heading {
+  border: 3px solid $black;
+  padding: 0 150px;
+  margin: 20px 0;
 }
 </style>
